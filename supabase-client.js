@@ -122,7 +122,7 @@ export function createClient(baseUrl, publishableKey) {
 
 
   // Exact production redirect: never accept caller-controlled destinations.
-  const RECOVERY_REDIRECT = "https://alexio00.github.io/HEALTH/recovery.html";
+  const RECOVERY_REDIRECT = "https://alexio00.github.io/HEALTH-pages/recovery.html";
   const recoveryError = () => new Error("Ссылка восстановления недействительна или устарела.");
 
   function parseRecoveryFragment(fragment) {
