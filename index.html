@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#111111">
+  <meta name="color-scheme" content="light dark">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self' https://ffvqgbslvjocbwfurxrv.supabase.co wss://ffvqgbslvjocbwfurxrv.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <title>HEALTH</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main id="root">
+    <section id="loading" class="panel">
+      <h1>HEALTH</h1>
+      <p>Проверяю сессию…</p>
+    </section>
+
+    <section id="login" class="panel hidden" aria-labelledby="login-title">
+      <h1 id="login-title">HEALTH</h1>
+      <p class="muted">Приватная медицинская карта. Доступ только владельцу.</p>
+      <form id="login-form">
+        <label>
+          Email
+          <input id="email" type="email" autocomplete="username" required>
+        </label>
+        <label>
+          Пароль
+          <input id="password" type="password" autocomplete="current-password" required>
+        </label>
+        <button type="submit">Войти</button>
+        <button id="forgot-password" type="button" class="link-button">Забыли пароль?</button>
+      </form>
+      <p id="login-error" class="error" role="alert"></p>
+      <p id="login-status" role="status" aria-live="polite"></p>
+    </section>
+
+
+    <section id="recovery-request" class="panel hidden" aria-labelledby="recovery-request-title">
+      <h1 id="recovery-request-title">Восстановление пароля</h1>
+      <p class="muted">Укажите email. Если он зарегистрирован, вы получите письмо со ссылкой.</p>
+      <form id="recovery-request-form">
+        <label>Email
+          <input id="recovery-email" type="email" autocomplete="username" maxlength="254" required>
+        </label>
+        <button id="recovery-send" type="submit">Отправить письмо</button>
+      </form>
+      <p id="recovery-request-status" role="status" aria-live="polite"></p>
+      <button id="recovery-request-back" type="button" class="link-button">Вернуться ко входу</button>
+    </section>
+
+    <section id="recovery-reset" class="panel hidden" aria-labelledby="recovery-reset-title">
+      <h1 id="recovery-reset-title">Новый пароль</h1>
+      <p class="muted">Не менее 12 символов. После смены потребуется войти заново.</p>
+      <form id="recovery-reset-form">
+        <label>Новый пароль
+          <input id="recovery-password" type="password" autocomplete="new-password" minlength="12" maxlength="1024" required>
+        </label>
+        <label>Повторите пароль
+          <input id="recovery-password-confirm" type="password" autocomplete="new-password" minlength="12" maxlength="1024" required>
+        </label>
+        <button id="recovery-save" type="submit">Сохранить новый пароль</button>
+      </form>
+      <p id="recovery-reset-status" class="error" role="alert"></p>
+      <button id="recovery-reset-back" type="button" class="link-button">Отменить восстановление</button>
+    </section>
+
+    <section id="app" class="hidden">
+      <header class="topbar">
+        <a class="brand" href="#/">HEALTH</a>
+        <button id="menu-toggle" class="menu-toggle ghost" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="Открыть меню"><span aria-hidden="true">☰</span></button>
+        <nav id="primary-nav" aria-label="Основная навигация">
+          <a href="#/">Текущее состояние</a>
+          <a href="#/chronic">Хронические состояния</a>
+          <a href="#/open-cases">Открытые случаи</a>
+          <a href="#/medications">Принимаемые препараты</a>
+          <a href="#/visit-preparation">Подготовка к визиту</a>
+          <a href="#/future-plan">Будущий план</a>
+          <a href="#/closed-cases">Закрытые случаи</a>
+          <a href="#/records">Записи</a>
+          <a href="#/vaccination">Вакцинация</a>
+        </nav>
+        <button id="logout" class="ghost" type="button">Выйти</button>
+      </header>
+      <section id="view" class="content" aria-live="polite"></section>
+    </section>
+  </main>
+
+  <footer class="release-footer"><small id="release-version" data-release-sha="5e24b2e7935e2fac9cd894f19662966ef5130bd9">Версия 5e24b2e7</small></footer>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
