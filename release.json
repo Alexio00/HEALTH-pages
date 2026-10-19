@@ -1,8 +1,8 @@
 {
   "schema": 1,
-  "sha": "5e24b2e7935e2fac9cd894f19662966ef5130bd9",
+  "sha": "aee17a886b55d4c707b8bc96c873ef89233e1205",
   "files": {
-    "index.html": "5fe4f9ae59828d9ce043a22fa9619e40bd0cfa1828b8e0ed588e4b0a15fe6be8",
+    "index.html": "d38619c041b0d3bbd5d7a56a2ba0d93e8288ec50654c9f6428e53990d0d56d81",
     "app.js": "9dda0b57e86985cb2cb3e392171c2e7f8409a3fa6544b5dd005abdfdf2600ac6",
     "styles.css": "ea07a8b8481020e835f90041e2f503bd3aa484dfbd0816fea91fa484bbe8a067",
     "vaccination.mjs": "91e14fb8503f2bb29507d002e5b86cda33ddd9346debb381ac372b5d5f5019b6",
@@ -10,7 +10,7 @@
     "config.js": "e1a22f654206bb5330bf76009935a454722e8a93436d40ab0382cc6bea2c615d",
     "manifest.webmanifest": "1ec85cfa6f114fe9c93627142dd203eaf5a61a1a91f10debf7a86b83a6cc1d5e",
     "icon.svg": "fd0f6fa5eebf4a835f353456bdc6727d182097b18d1e2fc8f2b67256122bd541",
-    "sw.js": "32e9485175f32c203cc0f845a29e16e63646961bec14e96b777805ccc654441d",
+    "sw.js": "a5fcd073c926a60fd3b1ac49412729d68eab020be0ddedf47bf19575e82b775a",
     "oauth-home.html": "db2c920698ce1dfced8d3a06a61c1bc9a7a4dd034854018c0af407cfa926c905",
     "oauth-privacy.html": "32d44c4760bfe446548597caed7af31bb3d39009d63417b5d8e0d7c63ec2f46f",
     "oauth-test/consent.html": "d732e477525d59a0ae2f8161d448f9d0e2a1ccfb3bd6ff42c3dcbfa71321da63",
@@ -19,17 +19,5 @@
     "oauth-test/consent-policy.mjs": "aca2de2fcbf6d4686b2139cd08732d2d39785864922b95933e9019be92ced0ca",
     "recovery.html": "7be440ae4697c32277390a0f54ca58dc417e603a4a0d26e9bf473d6c48f27248",
     "recovery.js": "77f31181370badcb73dcd780fe741d7abe673ea85b81a28231af334459b4d4f8"
-  },
-  "release_patch": {
-    "kind": "post-build-redirect-hotfix",
-    "source_repository": "Alexio00/HEALTH",
-    "source_pwa_sha": "5e24b2e7935e2fac9cd894f19662966ef5130bd9",
-    "changes": [
-      "supabase-client.js",
-      "oauth-test/consent-policy.mjs",
-      "sw.js"
-    ],
-    "reason": "Move password recovery callbacks to HEALTH-pages. Source pwa remains unchanged; manifest captures hotfix bytes.",
-    "cache_version": "5e24b2e7935e2fac9cd894f19662966ef5130bd9-pages-recovery-r1"
   }
 }
