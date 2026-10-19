@@ -1,0 +1,28 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src https://yjmcesdayfmfissghzgm.supabase.co; base-uri 'none'; form-action 'self'; object-src 'none'">
+<title>HEALTH-TEST — подключение чата</title><link rel="stylesheet" href="consent.css"></head>
+<body><main><h1>Подключение HEALTH-TEST</h1>
+<p>Только проверка OAuth и синтетической очереди. Медицинские записи недоступны.</p>
+<form id="login"><label>Email<input name="email" type="email" autocomplete="username" required></label>
+<label>Пароль<input name="password" type="password" autocomplete="current-password" required></label>
+<button type="submit" disabled>Войти в HEALTH-TEST</button></form>
+<p id="forgot"><a href="consent.html?mode=recovery" rel="noreferrer">Не помню пароль</a></p>
+<section id="recovery" hidden><h2>Восстановление пароля HEALTH-TEST</h2>
+<p>Запроси письмо и открой ссылку в том же браузере в течение 15 минут.
+Пароль задаётся только для учётной записи этого тестового проекта.</p>
+<form id="recover-email"><label>Email<input name="email" type="email" autocomplete="username" maxlength="254" required></label>
+<button type="submit" disabled>Отправить письмо восстановления</button></form>
+<form id="recover-password" hidden><label>Новый пароль<input name="password" type="password" autocomplete="new-password" minlength="12" maxlength="128" required></label>
+<label>Повтори новый пароль<input name="confirmation" type="password" autocomplete="new-password" minlength="12" maxlength="128" required></label>
+<button type="submit" disabled>Сохранить новый пароль</button></form>
+<p>После смены пароля вернись в ChatGPT и заново нажми «Подключить» у HEALTH-TEST Writer Probe.</p></section>
+<section id="review" hidden><h2>Проверь подключение</h2><pre id="details"></pre>
+<p>openid подтверждает TEST-учётку; email раскрывает её email приложению; offline_access позволяет обновлять сессию в пределах 30-минутного TEST-окна. Другие scopes не разрешаются.</p>
+<p>Приложение получит только доступ к синтетическому тесту. Это не согласие на медицинскую запись.</p>
+<button id="approve" disabled>Разрешить тестовое подключение</button>
+<button id="deny" disabled>Отказать</button></section>
+<p id="status" role="status">Настройка подключения ещё не завершена.</p></main>
+<script type="module" src="consent.mjs"></script></body></html>
+
