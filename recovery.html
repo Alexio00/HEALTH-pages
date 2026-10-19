@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta name="color-scheme" content="light dark">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self' https://ffvqgbslvjocbwfurxrv.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <title>HEALTH — восстановление пароля</title>
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+</head>
+<body>
+  <!-- This entrypoint is NOT in the shell SW cache, including legacy releases. -->
+  <main id="root">
+    <section id="recovery-loading" class="panel" aria-live="polite">
+      <h1>Восстановление пароля</h1>
+      <p>Проверяю ссылку…</p>
+    </section>
+    <section id="recovery-invalid" class="panel hidden" aria-labelledby="recovery-invalid-title">
+      <h1 id="recovery-invalid-title">Ссылка недействительна</h1>
+      <p id="recovery-error" role="alert">Ссылка восстановления недействительна или истекла. Запросите новое письмо.</p>
+      <a href="./">Вернуться к входу</a>
+    </section>
+    <section id="recovery-ready" class="panel hidden" aria-labelledby="recovery-ready-title">
+      <h1 id="recovery-ready-title">Новый пароль</h1>
+      <p class="muted">Не менее 12 символов. После изменения потребуется обычный вход.</p>
+      <form id="recovery-form">
+        <label>Новый пароль
+          <input id="recovery-password" type="password" autocomplete="new-password" minlength="12" maxlength="1024" required>
+        </label>
+        <label>Повторите пароль
+          <input id="recovery-confirm" type="password" autocomplete="new-password" minlength="12" maxlength="1024" required>
+        </label>
+        <button id="recovery-save" type="submit">Изменить пароль</button>
+      </form>
+      <p id="recovery-status" role="alert"></p>
+      <button id="recovery-cancel" type="button" class="link-button">Отменить восстановление</button>
+    </section>
+    <section id="recovery-done" class="panel hidden" aria-labelledby="recovery-done-title">
+      <h1 id="recovery-done-title">Пароль изменён</h1>
+      <p id="recovery-result" role="status"></p>
+      <a href="./">Войти с новым паролем</a>
+    </section>
+  </main>
+  <script type="module" src="./recovery.js"></script>
+</body>
+</html>
