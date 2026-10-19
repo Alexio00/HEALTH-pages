@@ -42,7 +42,7 @@ export function callbackAllowed(value, exact) {
 
 // Recovery is a separate fixed-origin route. No implicit tokens, OAuth request
 // IDs, redirect destinations or unknown/duplicate parameters are accepted.
-export const RECOVERY_URL='https://alexio00.github.io/HEALTH/oauth-test/consent.html?mode=recovery';
+export const RECOVERY_URL='https://alexio00.github.io/HEALTH-pages/oauth-test/consent.html?mode=recovery';
 export const RECOVERY_KEY='health-test-password-recovery:v1';
 export const RECOVERY_TTL_MS=15*60*1000;
 export function recoveryFromURL(value) {
