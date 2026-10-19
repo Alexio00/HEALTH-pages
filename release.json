@@ -1,8 +1,8 @@
 {
   "schema": 1,
-  "sha": "aee17a886b55d4c707b8bc96c873ef89233e1205",
+  "sha": "51acb88301339399adbe0c3b097b1984ca605aec",
   "files": {
-    "index.html": "d38619c041b0d3bbd5d7a56a2ba0d93e8288ec50654c9f6428e53990d0d56d81",
+    "index.html": "b30a565a527e54dff894121890b53b458707cddfd8a1266fb36341fdd5c9d3b6",
     "app.js": "9dda0b57e86985cb2cb3e392171c2e7f8409a3fa6544b5dd005abdfdf2600ac6",
     "styles.css": "ea07a8b8481020e835f90041e2f503bd3aa484dfbd0816fea91fa484bbe8a067",
     "vaccination.mjs": "91e14fb8503f2bb29507d002e5b86cda33ddd9346debb381ac372b5d5f5019b6",
@@ -10,7 +10,7 @@
     "config.js": "e1a22f654206bb5330bf76009935a454722e8a93436d40ab0382cc6bea2c615d",
     "manifest.webmanifest": "1ec85cfa6f114fe9c93627142dd203eaf5a61a1a91f10debf7a86b83a6cc1d5e",
     "icon.svg": "fd0f6fa5eebf4a835f353456bdc6727d182097b18d1e2fc8f2b67256122bd541",
-    "sw.js": "a5fcd073c926a60fd3b1ac49412729d68eab020be0ddedf47bf19575e82b775a",
+    "sw.js": "6b887575275c7e7440de586b5f9edaf783b665c7188ea23bf010a7cff0ccf6f8",
     "oauth-home.html": "db2c920698ce1dfced8d3a06a61c1bc9a7a4dd034854018c0af407cfa926c905",
     "oauth-privacy.html": "32d44c4760bfe446548597caed7af31bb3d39009d63417b5d8e0d7c63ec2f46f",
     "oauth-test/consent.html": "d732e477525d59a0ae2f8161d448f9d0e2a1ccfb3bd6ff42c3dcbfa71321da63",
