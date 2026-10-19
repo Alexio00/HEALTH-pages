@@ -1,0 +1,87 @@
+name: Publish verified HEALTH-pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: health-pages-public
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    name: Verify public static release
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout public release without credentials
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - name: Verify hashes and stage allowlisted public files
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+          import re
+          import shutil
+          root = Path.cwd()
+          output = Path(os.environ['RUNNER_TEMP']) / 'verified-site'
+          allowed = frozenset([
+              'index.html', 'app.js', 'styles.css', 'vaccination.mjs',
+              'supabase-client.js', 'config.js', 'manifest.webmanifest', 'icon.svg',
+              'sw.js', 'oauth-home.html', 'oauth-privacy.html',
+              'oauth-test/consent.html', 'oauth-test/consent.css',
+              'oauth-test/consent.mjs', 'oauth-test/consent-policy.mjs',
+              'recovery.html', 'recovery.js',
+          ])
+          marker = json.loads((root / 'release.json').read_text(encoding='utf-8'))
+          if (marker.get('schema') != 1 or not re.fullmatch(r'[a-f0-9]{40}', str(marker.get('sha', '')))):
+              raise SystemExit('Bad release identity')
+          files = marker.get('files')
+          if not isinstance(files, dict) or set(files) != allowed:
+              raise SystemExit('Unexpected public runtime file list')
+          for name in sorted(allowed):
+              src = root / name
+              if not src.is_file() or src.is_symlink():
+                  raise SystemExit('Missing or unsafe public file: ' + name)
+              contents = src.read_bytes()
+              digest = hashlib.sha256(contents).hexdigest()
+              if digest != files[name]:
+                  raise SystemExit('Public release hash mismatch: ' + name)
+              dst = output / name
+              dst.parent.mkdir(parents=True, exist_ok=True)
+              dst.write_bytes(contents)
+          (output / 'release.json').write_bytes((root / 'release.json').read_bytes())
+          (output / '.nojekyll').touch()
+          print('Verified public release:', marker['sha'], len(allowed), 'runtime files')
+          PY
+      - name: Upload only verified static release
+        uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
+        with:
+          path: ${{ runner.temp }}/verified-site
+
+  deploy:
+    name: Publish to GitHub Pages
+    needs: verify
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.pages.outputs.page_url }}
+    steps:
+      - name: Deploy verified artifact
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
+        id: pages
