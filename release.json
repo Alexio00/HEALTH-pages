@@ -6,7 +6,7 @@
     "app.js": "9dda0b57e86985cb2cb3e392171c2e7f8409a3fa6544b5dd005abdfdf2600ac6",
     "styles.css": "ea07a8b8481020e835f90041e2f503bd3aa484dfbd0816fea91fa484bbe8a067",
     "vaccination.mjs": "91e14fb8503f2bb29507d002e5b86cda33ddd9346debb381ac372b5d5f5019b6",
-    "supabase-client.js": "21ca15bc1a7896cb94e72e44970aded7e2138b1033383f923b3dc2b4526db3eb",
+    "supabase-client.js": "56a533ab38e1d81d68c08f857acaf0243c6c45f2f3f0d329df714206d3d5d713",
     "config.js": "e1a22f654206bb5330bf76009935a454722e8a93436d40ab0382cc6bea2c615d",
     "manifest.webmanifest": "1ec85cfa6f114fe9c93627142dd203eaf5a61a1a91f10debf7a86b83a6cc1d5e",
     "icon.svg": "fd0f6fa5eebf4a835f353456bdc6727d182097b18d1e2fc8f2b67256122bd541",
@@ -16,8 +16,18 @@
     "oauth-test/consent.html": "d732e477525d59a0ae2f8161d448f9d0e2a1ccfb3bd6ff42c3dcbfa71321da63",
     "oauth-test/consent.css": "d6d1569f419aac740e651578d8f09ecbdfc80d0e7ca3f65302e4116e2975f352",
     "oauth-test/consent.mjs": "393ae7dda8c8bd31fb3363a49108e94c1f4ca9e22688f09724a3728ac652431f",
-    "oauth-test/consent-policy.mjs": "85b76a508000aa4dc08c8b60ea18e020c217827479388f8a8c1f4ce99dc60003",
+    "oauth-test/consent-policy.mjs": "aca2de2fcbf6d4686b2139cd08732d2d39785864922b95933e9019be92ced0ca",
     "recovery.html": "7be440ae4697c32277390a0f54ca58dc417e603a4a0d26e9bf473d6c48f27248",
     "recovery.js": "77f31181370badcb73dcd780fe741d7abe673ea85b81a28231af334459b4d4f8"
+  },
+  "release_patch": {
+    "kind": "post-build-redirect-hotfix",
+    "source_repository": "Alexio00/HEALTH",
+    "source_pwa_sha": "5e24b2e7935e2fac9cd894f19662966ef5130bd9",
+    "changes": [
+      "supabase-client.js",
+      "oauth-test/consent-policy.mjs"
+    ],
+    "reason": "Move password recovery callbacks to HEALTH-pages. Source pwa remains unchanged; manifest captures hotfix bytes."
   }
 }
