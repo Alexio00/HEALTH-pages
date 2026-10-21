@@ -900,7 +900,6 @@ function caseDetails(item, { closed = false, open = false } = {}) {
         <span class="relation">${esc(link.relation)}</span>
         ${recLink(link.record_id, r ? recordDisplayTitle(r) : link.record_id)}
         ${date ? `<span class="muted"> · ${esc(fmtDate(date))}</span>` : ""}
-        ${r?.title ? `<span> · ${esc(r.title)}</span>` : ""}
         ${link.note ? `<p class="muted">${esc(link.note)}</p>` : ""}
       </li>
     `;
