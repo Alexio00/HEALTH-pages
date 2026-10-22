@@ -106,6 +106,9 @@ h3 { margin: 1.4rem 0 .6rem; }
   border-radius: .8rem;
   overflow: clip;
 }
+/* The closed-case list already spaces cards via grid gap. Do not add
+   per-card margins on top of that gap. Other case routes keep their margins. */
+.case-stack > .case-card { margin: 0; }
 .case-card > summary {
   cursor: pointer;
   padding: 1rem 1.1rem;

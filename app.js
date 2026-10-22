@@ -47,6 +47,13 @@ const fmtDate = (value) => {
   return m ? `${m[3]}.${m[2]}.${m[1]}` : String(value);
 };
 
+// Only explicit structured calendar fields provide chronological sort keys.
+// Free-form due_text is kept verbatim; its ISO-looking fragments are not parsed.
+const calendarSortValue = (date, fallback = "") => {
+  const iso = strictCalendarDate(date);
+  return iso ? "0|" + iso : "1|" + String(fallback ?? "");
+};
+
 const recLink = (recordId, label = recordId) =>
   `<a href="#/records/${encodeURIComponent(recordId)}">${esc(label)}</a>`;
 
@@ -1200,7 +1207,7 @@ function vaccinationRows(items, section, neutralById = new Map()) {
       cells: [
         tableCell(vaccinationInfectionCell(item, section), item.infection),
         tableCell(esc(item.stage), item.stage),
-        tableCell(esc(dateText), item.date || dateText),
+        tableCell(esc(dateText), calendarSortValue(item.date, dateText)),
         tableCell(esc(item.vaccine || "—"), item.vaccine || ""),
         tableCell(vaccinationControl(item,section,neutralById), status),
         tableCell(vaccinationRecCell(item), [
@@ -1290,13 +1297,15 @@ async function renderCurrentState(mode = "all", generation) {
 
   const planRows = (plan.data || []).map(x => {
     const due = x.metadata?.due_text || fmtDate(x.due_on) || "";
+    // A conditional textual deadline must not become an exact date for sorting.
+    const dateSort = calendarSortValue(x.metadata?.due_text ? null : x.due_on, due);
     const kind = x.metadata?.kind || "";
     const status = neutralPlanSourceStatus(x.metadata?.source_status, "запланировано");
     const note = neutral.stateById.get(x.plan_item_id)==="PAST_DATE_REVIEW"?neutralDateNote():"";
     return {
       attrs: { "data-kind": kind, "data-status": status },
       cells: [
-        tableCell(esc(due), due),
+        tableCell(esc(due), dateSort),
         tableCell(esc(kind), kind),
         tableCell(esc(x.title), x.title),
         tableCell(esc(status)+note, status),
